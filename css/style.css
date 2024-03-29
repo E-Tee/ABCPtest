@@ -1,0 +1,239 @@
+html {
+    box-sizing: border-box;
+    font-family: Roboto;
+    font-weight: 400;
+    color: #fff;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.list-reset {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.button-reset {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.flex {
+    display: flex;
+}
+
+.container {
+    max-width: 1200px;
+    /* Максимальная ширина контейнера */
+    margin: 0 auto;
+    padding: 0 15px;
+    /* Паддинг по бокам контейнера */
+    background-color: #C0DBD9;
+}
+
+.header-content {
+    padding: 1.90625rem 1.875rem;
+    background-color: #7FAFF6;
+}
+
+.popup-button {
+    width: 12.8125rem;
+    height: 2.4375rem;
+    border-radius: 5px;
+    background-color: #A5C7F9;
+    color: #fff;
+}
+
+.popup-button a {
+    display: block;
+    padding: 8px 30px;
+}
+
+.block-1-content {
+    padding: 0.9375rem 0;
+    /* Паддинг блока 1 */
+}
+
+.block-1-list__wrapper {
+    background-color: #B3F95A;
+}
+
+.block-1-list {
+    display: grid;
+    grid-template-columns: 33.4% 50.5% 13.51%;
+    grid-template-rows: 198px;
+    row-gap: 15px;
+    column-gap: 1.3%;
+    counter-reset: stages;
+}
+
+.block-1-list__item {
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    background-color: #8AD191;
+    height: 198px;
+}
+
+.block-1-list__item::before {
+    position: absolute;
+    counter-increment: stages;
+    content: counter(stages);
+    font-size: 3.375rem;
+    /* Размер шрифта */
+    line-height: 3.875rem;
+    /* Высота строки */
+    text-align: center;
+}
+
+.block-1-list__item:first-child {
+    grid-area: 1 / 1 / 2 / 2;
+}
+
+.block-1-list__item:nth-child(2) {
+    grid-area: 1 / 2 / 2 / 3;
+}
+
+.block-1-list__item:nth-child(3) {
+    position: relative;
+    right: 0;
+    grid-area: 1 / 3 / 2 / 4;
+}
+
+.block-1-list__item:nth-child(4) {
+    grid-area: 2 / 1 / 3 / 3;
+}
+
+.block-1-list__item:nth-child(5) {
+    grid-area: 2 / 3 / 3 / 4;
+}
+
+.block-2-content {
+    padding-bottom: 100px;
+    /* Паддинг блока 2 */
+}
+
+.block-2-list {
+    padding: 1.875rem;
+    /* Паддинг списка блока 2 */
+    background-color: #88B5BF;
+}
+
+.block-2-list__item {
+    width: 23%;
+    padding-top: 17.93%;
+    background-color: #0D89B0;
+}
+
+.block-2-list__item:not(:last-child) {
+    margin-right: 30px;
+    /* Отступ между элементами списка блока 2 */
+}
+
+.footer-content {
+    height: 6.25rem;
+    /* Высота подвала */
+    background-color: #7FAFF6;
+}
+
+/*Поп-ап стили*/
+
+.popup__title {
+    color: black;
+}
+
+/* Базовые стили слоя затемнения и модального окна  */
+.overlay {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    visibility: hidden;
+    /* фон затемнения */
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    position: fixed;
+    /* фиксированное поцизионирование */
+    cursor: default;
+    transition: opacity .5s;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup {
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    visibility: hidden;
+    margin: 0 auto;
+    max-width: 25rem;
+    /* Максимальная ширина модального окна */
+    width: 90%;
+    /* Ширина модального окна */
+    height: auto;
+    /* Высота модального окна */
+    /* фиксированное позиционирование, окно стабильно при прокрутке */
+    position: fixed;
+    padding: 10rem 7.25rem;
+    /* Паддинг модального окна */
+    background-color: #FFFFFF;
+    /* внешняя тень блока */
+    box-shadow: 0px 0px 0.375rem rgba(0, 0, 0, 0.8);
+    /* Тень блока */
+    /* полная прозрачность окна, появление при клике */
+    opacity: 0;
+    /* эффект перехода (появление) */
+    transition: all ease .5s;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* активируем появление окна и затемнение фона */
+.overlay:target+.popup {
+    top: 20%;
+    /* положение окна от верха страницы при появлении */
+    visibility: visible;
+    opacity: 1;
+    /* убираем прозрачность */
+}
+
+.popup__wrapper {
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 0.9375rem;
+    right: 0.9375rem;
+    padding: 0.5rem 0.9375rem;
+    width: 2.6875rem;
+    height: 2.4375rem;
+    background-color: #7FAFF6;
+    border-radius: 0.3125rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all ease .8s;
+}
+
+.close:before {
+    color: rgba(255, 255, 255, 0.9);
+    content: "X";
+    font-size: 1.25rem;
+}
